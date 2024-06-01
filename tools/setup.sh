@@ -12,7 +12,7 @@ verbose=0
 debug_level=0
 dry_run=0
 command_list=""
-image_size="1920x1080"
+image_size="1536x864"
 sensor_format="SRGGB10_1X10"
 image_format="RBG888_1X24"
 target_format="RBG888_1X24"
@@ -54,10 +54,10 @@ get_v4l2_subdev()
 }
 
 #
-# IMX219 Subsystem
+# IMX708 Subsystem
 #
-v4l2_entry_imx219="imx219 6-0010"
-v4l2_device_imx219=$(get_v4l2_subdev "imx219")
+v4l2_entry_imx708="imx708_wide"
+v4l2_device_imx708=$(get_v4l2_subdev "imx708")
 
 #
 # MIPI CSI2-Rx Subsystem
@@ -105,15 +105,15 @@ set_v4l2()
     run_command "${media_ctl_command} -d ${v4l2_media_device} --set-v4l2 '\"${entry}\":${port} [${value}]'"
 }
 
-setup_imx219()
+setup_imx708()
 {
     local image_size=$1
     local format=$2
 
     if [ $verbose -gt 0 ] || [ $debug_level -gt 0 ]; then
-        echo "### SONY IMX219 Sensor ###"
+        echo "### SONY IMX708 Sensor ###"
     fi
-    set_v4l2 "${v4l2_entry_imx219}" 0 "fmt:${format}/${image_size}"
+    set_v4l2 "${v4l2_entry_imx708}" 0 "fmt:${format}/${image_size}"
 }
 
 setup_mipi_csi2_rx()
@@ -232,7 +232,7 @@ do_setup()
     local image_size=$1
     local target_format=$2
     
-    setup_imx219         ${image_size} ${sensor_format}
+    setup_imx708         ${image_size} ${sensor_format}
     setup_mipi_csi2_rx   ${image_size} ${sensor_format}
     setup_demosaic       ${image_size} ${sensor_format} ${image_format}
     setup_gamma_lut      ${image_size} ${image_format}
@@ -252,7 +252,7 @@ do_setup()
     set_proc_ss_scaler_gain_green "24"
 
     ## set sensor gain ?
-    run_command "v4l2-ctl --set-ctrl=analogue_gain=120"
+    run_command "v4l2-ctl --set-ctrl=analogue_gain=960"
     run_command "v4l2-ctl --set-ctrl=digital_gain=400"
 }
 
