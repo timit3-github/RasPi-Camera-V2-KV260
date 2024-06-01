@@ -16,7 +16,7 @@ image_size="1920x1080"
 sensor_format="SRGGB10_1X10"
 image_format="RBG888_1X24"
 target_format="RBG888_1X24"
-media_ctl_command="tools/media-ctl"
+media_ctl_command="media-ctl"
 
 #
 # Video4Linux Devices

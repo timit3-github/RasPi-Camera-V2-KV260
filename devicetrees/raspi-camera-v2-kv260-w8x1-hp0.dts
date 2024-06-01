@@ -195,7 +195,7 @@
 						reg = <1>;
 						//xlnx,cfa-pattern = "rggb";
 						//xlnx,video-format = <2>;
-						xlnx,video-width = <8>;
+						xlnx,video-width = <10>;
 						demo_outv_demosaic_0: endpoint {
 							remote-endpoint = <&v_gamma_lut_0v_demosaic_0>;
 						};
@@ -203,7 +203,7 @@
 					demosaic_port0v_demosaic_0: port@0 {
 						reg = <0>;
 						//xlnx,cfa-pattern = "rggb";
-						xlnx,video-width = <8>;
+						xlnx,video-width = <10>;
 						v_demosaic_0mipi_csi2_rx_subsyst_0: endpoint {
 							remote-endpoint = <&mipi_csirx_outmipi_csi2_rx_subsyst_0>;
 						};
@@ -249,7 +249,7 @@
 					gamma_port1v_gamma_lut_0: port@1 {
 						reg = <1>;
 						xlnx,video-format = <2>;
-						xlnx,video-width  = <8>;
+						xlnx,video-width  = <10>;
 						gamma_outv_gamma_lut_0: endpoint {
 							remote-endpoint = <&v_proc_ss_cscv_gamma_lut_0>;
 						};
@@ -257,7 +257,7 @@
 					gamma_port0v_gamma_lut_0: port@0 {
 						reg = <0>;
 						xlnx,video-format = <2>;
-						xlnx,video-width  = <8>;
+						xlnx,video-width  = <10>;
 						v_gamma_lut_0v_demosaic_0: endpoint {
 							remote-endpoint = <&demo_outv_demosaic_0>;
 						};
