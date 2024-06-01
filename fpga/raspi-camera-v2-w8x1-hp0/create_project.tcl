@@ -6,7 +6,7 @@ set project_directory       [file dirname [info script]]
 set project_name            "project"
 set board_part              [get_board_parts -quiet -latest_file_version "*kv260*"]
 lappend constrs_file_list   [file join $project_directory "design_1_pin.xdc" ]
-set design_bd_tcl_file      [file join $project_directory "design_1_bd_2023.1.tcl"  ]
+set design_bd_tcl_file      [file join $project_directory "design_1_bd_2023.2.tcl"  ]
 #
 # Create project
 #
