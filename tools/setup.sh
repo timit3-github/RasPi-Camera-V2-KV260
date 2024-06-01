@@ -240,9 +240,9 @@ do_setup()
     setup_proc_ss_scaler ${image_size} ${target_format}
 
     ## set gamma_lut gain
-    set_gamma_lut_gain_red   "10"
-    set_gamma_lut_gain_blue  "10"
-    set_gamma_lut_gain_green "10"
+    set_gamma_lut_gain_red   "5"   # 0.5 -> gamma 1/2.0
+    set_gamma_lut_gain_blue  "5"   # 0.5 -> gamma 1/2.0
+    set_gamma_lut_gain_green "5"   # 0.5 -> gamma 1/2.0
 
     ## set proc_ss_scaler
     set_proc_ss_scaler_brightness "80"
