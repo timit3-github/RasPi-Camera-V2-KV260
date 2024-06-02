@@ -361,6 +361,7 @@ shell$ cd build
 shell$ cmake ..
 shell$ make -j4
 shell$ ./capture
+```
 
 Setup video4linux (HD)
 ------------------------------------------------------------------------------------
@@ -541,3 +542,4 @@ shell$ cd build
 shell$ cmake ..
 shell$ make -j4
 shell$ ./capture
+```
