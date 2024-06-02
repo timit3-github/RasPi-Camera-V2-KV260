@@ -339,3 +339,25 @@ New clock: GstSystemClock
 /GstPipeline:pipeline0/GstCapsFilter:capsfilter0.GstPad:sink: caps = video/x-raw, width=(int)1536, height=(int)864, framerate=(fraction)120/1, format=(string)BGRx, interlace-mode=(string)progressive, colorimetry=(string)sRGB
 ```
 </details>
+
+OpenCV example
+------------------------------------------------------------------------------------
+
+### save still
+```console
+shell$ cd example/still
+shell$ mkdir build
+shell$ cd build
+shell$ cmake ..
+shell$ make -j4
+shell$ ./still
+```
+
+### show capture
+```console
+shell$ cd example/capture
+shell$ mkdir build
+shell$ cd build
+shell$ cmake ..
+shell$ make -j4
+shell$ ./capture
