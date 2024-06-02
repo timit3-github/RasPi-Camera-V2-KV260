@@ -33,7 +33,7 @@ Current Status
 Build Bitstream file
 ------------------------------------------------------------------------------------
 
-[Build raspi-camera-v2-kv260-w8x1-hp0.bin](./fpga/raspi-camera-v2-w8x1-hp0/Readme.md)
+[Build raspi-camera-v3-kv260-w8x1-hp0.bin](./fpga/raspi-camera-v3-w8x1-hp0/Readme.md)
 
 Install Bitstream and Device Tree
 ------------------------------------------------------------------------------------
@@ -41,13 +41,13 @@ Install Bitstream and Device Tree
 ### Decompress raspi-camera-v3-kv260-w8x1-hp0.bin.gz to raspi-camera-v3-kv260-w8x1-hp0.bin
 
 ```console
-shell$ gzip -d fpga/raspi-camera-v2-w8x1-hp0/raspi-camera-v3-kv260-w8x1-hp0.bin.gz
+shell$ gzip -d fpga/raspi-camera-v3-w8x1-hp0/raspi-camera-v3-kv260-w8x1-hp0.bin.gz
 ```
 
-### Copy fpga/raspi-camera-v2-w8x1-hp0/raspi-camera-v3-kv260-w8x1-hp0.bin to /lib/firmware
+### Copy fpga/raspi-camera-v3-w8x1-hp0/raspi-camera-v3-kv260-w8x1-hp0.bin to /lib/firmware
 
 ```console
-shell$ sudo cp fpga/raspi-camera-v2-w8x1-hp0/raspi-camera-v3-kv260-w8x1-hp0.bin /lib/firmware
+shell$ sudo cp fpga/raspi-camera-v3-w8x1-hp0/raspi-camera-v3-kv260-w8x1-hp0.bin /lib/firmware
 ```
 
 ### Copy kernel_module/imx708.ko to /lib/modules/6.1.70-zynqmp-fpga-trial/kernel/drivers/media/i2c
