@@ -266,7 +266,7 @@ proc create_root_design { parentCell } {
    CONFIG.CMN_NUM_PIXELS {1} \
    CONFIG.CMN_PXL_FORMAT {RAW10} \
    CONFIG.CMN_VC {All} \
-   CONFIG.CSI_BUF_DEPTH {4096} \
+   CONFIG.CSI_BUF_DEPTH {8192} \
    CONFIG.C_CLK_LANE_IO_POSITION {26} \
    CONFIG.C_CSI_EN_ACTIVELANES {false} \
    CONFIG.C_CSI_EN_CRC {false} \
@@ -315,8 +315,8 @@ proc create_root_design { parentCell } {
   # Create instance: v_demosaic_0, and set properties
   set v_demosaic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_demosaic:1.1 v_demosaic_0 ]
   set_property -dict [ list \
-   CONFIG.MAX_COLS {1920} \
-   CONFIG.MAX_ROWS {1080} \
+   CONFIG.MAX_COLS {8192} \
+   CONFIG.MAX_ROWS {4320} \
    CONFIG.MAX_DATA_WIDTH {10} \
    CONFIG.SAMPLES_PER_CLOCK {1} \
    CONFIG.USE_URAM {1} \
@@ -343,8 +343,8 @@ proc create_root_design { parentCell } {
    CONFIG.HAS_YUVX8 {1} \
    CONFIG.HAS_Y_UV8_420 {1} \
    CONFIG.HAS_Y_U_V10 {1} \
-   CONFIG.MAX_COLS {1920} \
-   CONFIG.MAX_ROWS {1080} \
+   CONFIG.MAX_COLS {8192} \
+   CONFIG.MAX_ROWS {4320} \
    CONFIG.MAX_DATA_WIDTH {8} \
    CONFIG.SAMPLES_PER_CLOCK {1} \
    CONFIG.MAX_NR_PLANES {3} \
@@ -353,8 +353,8 @@ proc create_root_design { parentCell } {
   # Create instance: v_gamma_lut_0, and set properties
   set v_gamma_lut_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_gamma_lut:1.1 v_gamma_lut_0 ]
   set_property -dict [ list \
-   CONFIG.MAX_COLS {1920} \
-   CONFIG.MAX_ROWS {1080} \
+   CONFIG.MAX_COLS {8192} \
+   CONFIG.MAX_ROWS {4320} \
    CONFIG.MAX_DATA_WIDTH {10} \
    CONFIG.SAMPLES_PER_CLOCK {1} \
  ] $v_gamma_lut_0
@@ -362,8 +362,8 @@ proc create_root_design { parentCell } {
   # Create instance: v_proc_ss_csc, and set properties
   set v_proc_ss_csc [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_proc_ss:2.3 v_proc_ss_csc ]
   set_property -dict [ list \
-   CONFIG.C_MAX_COLS {1920} \
-   CONFIG.C_MAX_ROWS {1080} \
+   CONFIG.C_MAX_COLS {8192} \
+   CONFIG.C_MAX_ROWS {4320} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
    CONFIG.C_SAMPLES_PER_CLK {1} \
    CONFIG.C_COLORSPACE_SUPPORT {0} \
@@ -373,8 +373,8 @@ proc create_root_design { parentCell } {
   # Create instance: v_proc_ss_scaler, and set properties
   set v_proc_ss_scaler [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_proc_ss:2.3 v_proc_ss_scaler ]
   set_property -dict [ list \
-   CONFIG.C_MAX_COLS {1920} \
-   CONFIG.C_MAX_ROWS {1080} \
+   CONFIG.C_MAX_COLS {8192} \
+   CONFIG.C_MAX_ROWS {4320} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
    CONFIG.C_SAMPLES_PER_CLK {1} \
    CONFIG.C_COLORSPACE_SUPPORT {0} \

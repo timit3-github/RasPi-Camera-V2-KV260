@@ -13,7 +13,7 @@
 		overlay0: __overlay__ {
 			#address-cells = <2>;
 			#size-cells = <2>;
-			firmware-name = "raspi-camera-v2-kv260-w8x1-hp0.bin";
+			firmware-name = "raspi-camera-v3-kv260-w8x1-hp0.bin";
 			resets = <&zynqmp_reset 116>;
 		};
 	};
@@ -190,8 +190,8 @@
 				interrupts = <0 106 4>;
 				reg = <0x0 0xa0010000 0x0 0x10000>;
 				reset-gpios = <&gpio 78 1>;
-				xlnx,max-height = <1080>;
-				xlnx,max-width = <1920>;
+				xlnx,max-height = <4320>;
+				xlnx,max-width = <8192>;
 				xlnx,s-axi-ctrl-addr-width = <0x6>;
 				xlnx,s-axi-ctrl-data-width = <0x20>;
 				demosaic_portsv_demosaic_0: ports {
@@ -229,8 +229,8 @@
 				reset-gpios = <&gpio 82 1>;
 				xlnx,dma-addr-width = <32>;
 				xlnx,dma-align = <16>;
-				xlnx,max-height = <1080>;
-				xlnx,max-width = <1920>;
+				xlnx,max-height = <4320>;
+				xlnx,max-width = <8192>;
 				xlnx,pixels-per-clock = <2>;
 				xlnx,s-axi-ctrl-addr-width = <0x7>;
 				xlnx,s-axi-ctrl-data-width = <0x20>;
@@ -246,8 +246,8 @@
 				interrupts = <0 107 4>;
 				reg = <0x0 0xa0030000 0x0 0x10000>;
 				reset-gpios = <&gpio 79 1>;
-				xlnx,max-height = <1080>;
-				xlnx,max-width = <1920>;
+				xlnx,max-height = <4320>;
+				xlnx,max-width = <8192>;
 				xlnx,s-axi-ctrl-addr-width = <13>;
 				xlnx,s-axi-ctrl-data-width = <32>;
 				gamma_portsv_gamma_lut_0: ports {
@@ -279,8 +279,8 @@
 				reset-gpios = <&gpio 80 1>;
 				xlnx,colorspace-support = <1>;
 				//xlnx,csc-enable-window = "true";
-				xlnx,max-height = <1080>;
-				xlnx,max-width = <1920>;
+				xlnx,max-height = <4320>;
+				xlnx,max-width = <8192>;
 				xlnx,num-video-components = <3>;
 				xlnx,samples-per-clk = <1>;
 				//xlnx,topology = <3>;
@@ -318,9 +318,9 @@
 				xlnx,enable-csc = "false";
 				xlnx,h-scaler-phases = <64>;
 				xlnx,h-scaler-taps = <6>;
-				xlnx,max-height = <1080>;
+				xlnx,max-height = <4320>;
 				xlnx,max-num-phases = <64>;
-				xlnx,max-width = <1920>;
+				xlnx,max-width = <8192>;
 				xlnx,num-hori-taps = <6>;
 				xlnx,num-vert-taps = <6>;
 				xlnx,pix-per-clk = <1>;
