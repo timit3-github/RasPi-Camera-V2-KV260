@@ -266,7 +266,7 @@ proc create_root_design { parentCell } {
    CONFIG.CMN_NUM_PIXELS {1} \
    CONFIG.CMN_PXL_FORMAT {RAW10} \
    CONFIG.CMN_VC {All} \
-   CONFIG.CSI_BUF_DEPTH {4096} \
+   CONFIG.CSI_BUF_DEPTH {8192} \
    CONFIG.C_CLK_LANE_IO_POSITION {26} \
    CONFIG.C_CSI_EN_ACTIVELANES {false} \
    CONFIG.C_CSI_EN_CRC {false} \
@@ -315,9 +315,9 @@ proc create_root_design { parentCell } {
   # Create instance: v_demosaic_0, and set properties
   set v_demosaic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_demosaic:1.1 v_demosaic_0 ]
   set_property -dict [ list \
-   CONFIG.MAX_COLS {1920} \
-   CONFIG.MAX_ROWS {1080} \
-   CONFIG.MAX_DATA_WIDTH {8} \
+   CONFIG.MAX_COLS {8192} \
+   CONFIG.MAX_ROWS {4320} \
+   CONFIG.MAX_DATA_WIDTH {10} \
    CONFIG.SAMPLES_PER_CLOCK {1} \
    CONFIG.USE_URAM {1} \
  ] $v_demosaic_0
@@ -325,11 +325,11 @@ proc create_root_design { parentCell } {
   # Create instance: axis_subset_converter_10_8, and set properties
   set axis_subset_converter_10_8 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axis_subset_converter:1.1 axis_subset_converter_10_8 ]
   set_property -dict [list \
-    CONFIG.M_TDATA_NUM_BYTES {1} \
+    CONFIG.M_TDATA_NUM_BYTES {3} \
     CONFIG.M_TDEST_WIDTH {1} \
-    CONFIG.S_TDATA_NUM_BYTES {2} \
+    CONFIG.S_TDATA_NUM_BYTES {4} \
     CONFIG.S_TDEST_WIDTH {10} \
-    CONFIG.TDATA_REMAP {tdata[9:2]} \
+    CONFIG.TDATA_REMAP {tdata[29:22], tdata[19:12], tdata[9:2]} \
   ] $axis_subset_converter_10_8
 
   # Create instance: v_frmbuf_wr_0, and set properties
@@ -343,8 +343,8 @@ proc create_root_design { parentCell } {
    CONFIG.HAS_YUVX8 {1} \
    CONFIG.HAS_Y_UV8_420 {1} \
    CONFIG.HAS_Y_U_V10 {1} \
-   CONFIG.MAX_COLS {1920} \
-   CONFIG.MAX_ROWS {1080} \
+   CONFIG.MAX_COLS {8192} \
+   CONFIG.MAX_ROWS {4320} \
    CONFIG.MAX_DATA_WIDTH {8} \
    CONFIG.SAMPLES_PER_CLOCK {1} \
    CONFIG.MAX_NR_PLANES {3} \
@@ -353,17 +353,17 @@ proc create_root_design { parentCell } {
   # Create instance: v_gamma_lut_0, and set properties
   set v_gamma_lut_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_gamma_lut:1.1 v_gamma_lut_0 ]
   set_property -dict [ list \
-   CONFIG.MAX_COLS {1920} \
-   CONFIG.MAX_ROWS {1080} \
-   CONFIG.MAX_DATA_WIDTH {8} \
+   CONFIG.MAX_COLS {8192} \
+   CONFIG.MAX_ROWS {4320} \
+   CONFIG.MAX_DATA_WIDTH {10} \
    CONFIG.SAMPLES_PER_CLOCK {1} \
  ] $v_gamma_lut_0
 
   # Create instance: v_proc_ss_csc, and set properties
   set v_proc_ss_csc [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_proc_ss:2.3 v_proc_ss_csc ]
   set_property -dict [ list \
-   CONFIG.C_MAX_COLS {1920} \
-   CONFIG.C_MAX_ROWS {1080} \
+   CONFIG.C_MAX_COLS {8192} \
+   CONFIG.C_MAX_ROWS {4320} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
    CONFIG.C_SAMPLES_PER_CLK {1} \
    CONFIG.C_COLORSPACE_SUPPORT {0} \
@@ -373,8 +373,8 @@ proc create_root_design { parentCell } {
   # Create instance: v_proc_ss_scaler, and set properties
   set v_proc_ss_scaler [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_proc_ss:2.3 v_proc_ss_scaler ]
   set_property -dict [ list \
-   CONFIG.C_MAX_COLS {1920} \
-   CONFIG.C_MAX_ROWS {1080} \
+   CONFIG.C_MAX_COLS {8192} \
+   CONFIG.C_MAX_ROWS {4320} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
    CONFIG.C_SAMPLES_PER_CLK {1} \
    CONFIG.C_COLORSPACE_SUPPORT {0} \
@@ -463,11 +463,11 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net ps8_0_axi_periph_M00_AXI [get_bd_intf_pins axi_iic_0/S_AXI] [get_bd_intf_pins ps8_0_axi_periph/M00_AXI]
   connect_bd_intf_net -intf_net ps8_0_axi_periph_M01_AXI [get_bd_intf_pins mipi_csi2_rx_subsyst_0/csirxss_s_axi] [get_bd_intf_pins ps8_0_axi_periph/M01_AXI]
   connect_bd_intf_net -intf_net mipi_csi_raspi_1 [get_bd_intf_ports mipi_csi_raspi] [get_bd_intf_pins mipi_csi2_rx_subsyst_0/mipi_phy_if]
-  connect_bd_intf_net -intf_net mipi_csi2_rx_subsyst_0_video_out [get_bd_intf_pins mipi_csi2_rx_subsyst_0/video_out] [get_bd_intf_pins axis_subset_converter_10_8/S_AXIS]
-  connect_bd_intf_net -intf_net axis_subset_converter_10_8_out [get_bd_intf_pins axis_subset_converter_10_8/M_AXIS] [get_bd_intf_pins v_demosaic_0/s_axis_video]
+  connect_bd_intf_net -intf_net mipi_csi2_rx_subsyst_0_video_out [get_bd_intf_pins mipi_csi2_rx_subsyst_0/video_out] [get_bd_intf_pins v_demosaic_0/s_axis_video]
   connect_bd_intf_net -intf_net v_demosaic_0_m_axis_video [get_bd_intf_pins v_demosaic_0/m_axis_video] [get_bd_intf_pins v_gamma_lut_0/s_axis_video]
+  connect_bd_intf_net -intf_net v_gamma_lut_0_m_axis_video [get_bd_intf_pins v_gamma_lut_0/m_axis_video] [get_bd_intf_pins axis_subset_converter_10_8/S_AXIS]
+  connect_bd_intf_net -intf_net axis_subset_converter_10_8_M_AXIS [get_bd_intf_pins axis_subset_converter_10_8/M_AXIS] [get_bd_intf_pins v_proc_ss_csc/s_axis]
   connect_bd_intf_net -intf_net v_frmbuf_wr_0_m_axi_mm_video [get_bd_intf_pins axi_smc/S00_AXI] [get_bd_intf_pins v_frmbuf_wr_0/m_axi_mm_video]
-  connect_bd_intf_net -intf_net v_gamma_lut_0_m_axis_video [get_bd_intf_pins v_gamma_lut_0/m_axis_video] [get_bd_intf_pins v_proc_ss_csc/s_axis]
   connect_bd_intf_net -intf_net v_proc_ss_0_m_axis [get_bd_intf_pins v_proc_ss_csc/m_axis] [get_bd_intf_pins v_proc_ss_scaler/s_axis]
   connect_bd_intf_net -intf_net v_proc_ss_scaler_m_axis [get_bd_intf_pins v_frmbuf_wr_0/s_axis_video] [get_bd_intf_pins v_proc_ss_scaler/m_axis]
   connect_bd_intf_net -intf_net zynq_ultra_ps_e_0_M_AXI_HPM0_FPD [get_bd_intf_pins ps8_0_axi_periph_1/S00_AXI] [get_bd_intf_pins zynq_ultra_ps_e_0/M_AXI_HPM0_FPD]
