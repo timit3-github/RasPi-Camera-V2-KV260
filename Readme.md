@@ -339,6 +339,40 @@ New clock: GstSystemClock
 /GstPipeline:pipeline0/GstCapsFilter:capsfilter0.GstPad:sink: caps = video/x-raw, width=(int)1536, height=(int)864, framerate=(fraction)120/1, format=(string)BGRx, interlace-mode=(string)progressive, colorimetry=(string)sRGB
 ```
 </details>
+```
+
+### Run example/v4l2_capture_simple/v4l2_capture_mplane_mmap
+
+```console
+shell$ example/v4l2_capture_simple/v4l2_capture_mplane_mmap
+Frame :
+  Width   : 1920
+  Height  : 1080
+Frames    : 10
+Proc Time : # Average Per Frame
+  Total   : 0.115478984 #[Second]
+  Wait    : 0.005619997 #[Second]
+  Dequeue : 0.000007525 #[Second]
+  Run     : 0.109804938 #[Second]
+  Enqueue : 0.000044927 #[Second]
+FPS       : 8.659584305 #[Frames Per Second]
+```
+
+### Run example/v4l2_capture_simple/v4l2_capture_mplane_dma_heap
+
+```console
+shell$ sudo example/v4l2_capture_simple/v4l2_capture_mplane_dma_heap
+Frame :
+  Width   : 1920
+  Height  : 1080
+Frames    : 10
+Proc Time : # Average Per Frame
+  Total   : 0.026291081 #[Second]
+  Wait    : 0.005623366 #[Second]
+  Dequeue : 0.000007080 #[Second]
+  Run     : 0.020613501 #[Second]
+  Enqueue : 0.000045406 #[Second]
+FPS       : 38.035712423 #[Frames Per Second]
 
 OpenCV example
 ------------------------------------------------------------------------------------
