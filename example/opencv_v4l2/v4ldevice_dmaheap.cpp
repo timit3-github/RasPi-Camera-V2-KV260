@@ -297,12 +297,12 @@ int V4L2Capture::capture_frame(void)
         // 9.3 Process Captured Buffer
         //
         // proc_run_start(count);
-        for (int plane = 0; plane < num_planes; plane++)
-        {
-            void *buf_start = buffers[buf_index][plane].start;
-            size_t buf_size = buffers[buf_index][plane].length;
-            // proc_run(count, buf_index, plane, buf_start, buf_size);
-        }
+        // for (int plane = 0; plane < num_planes; plane++)
+        // {
+        //     void *buf_start = buffers[buf_index][plane].start;
+        //     size_t buf_size = buffers[buf_index][plane].length;
+        //     proc_run(count, buf_index, plane, buf_start, buf_size);
+        // }
         // proc_run_done(count);
         //
         // 9.4 Enqueue Captured Buffer
@@ -331,7 +331,8 @@ int V4L2Capture::read(cv::Mat &mat)
 {
     capture_frame();
     // cvMat.copyTo(mat);   // deep copy
-    mat = cvMat;    // shallow copy
+    // mat = cvMat;    // shallow copy
+    cvtColor(cvMat, mat, COLOR_RGB2BGR);    // swap Red and Blue
 
     return mat.empty();
 };
