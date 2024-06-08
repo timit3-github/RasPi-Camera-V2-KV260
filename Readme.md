@@ -577,3 +577,25 @@ shell$ cmake ..
 shell$ make -j4
 shell$ ./capture
 ```
+
+OpenCV camera class example (HD)
+------------------------------------------------------------------------------------
+
+### build
+```console
+shell$ cd example/opencv_v4l2
+shell$ mkdir build
+shell$ cd build
+shell$ cmake ..
+shell$ make -j4
+```
+
+### show capture (mmap)
+```console
+shell$ ./opencv_mplane_mmap
+```
+
+### show capture (dma-heap)
+```console
+shell$ sudo ./opencv_mplane_dma_heap
+```
